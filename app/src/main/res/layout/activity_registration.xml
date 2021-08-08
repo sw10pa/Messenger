@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".registration.RegistrationActivity">
 
     <ImageView
         android:id="@+id/avatarImageView"
@@ -49,47 +49,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nicknameEditText" />
 
-    <Button
-        android:id="@+id/signInButton"
+    <EditText
+        android:id="@+id/whatIDoEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sign_in_button_margin_top"
-        android:backgroundTint="@color/login_activity_sign_in_button_background_color"
-        android:text="@string/sign_in_button_text"
-        android:textSize="@dimen/sign_in_button_text_size"
-        app:cornerRadius="@dimen/sign_in_button_corner_radius"
+        android:layout_height="@dimen/credentials_edit_text_height"
+        android:layout_marginTop="@dimen/credentials_edit_text_spacing"
+        android:background="@drawable/credentials_edit_text_background"
+        android:backgroundTint="@color/credentials_edit_text_background_color"
+        android:ems="12"
+        android:hint="@string/what_i_do_edit_text_hint"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="@dimen/credentials_edit_text_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
-
-    <TextView
-        android:id="@+id/notRegisteredTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/not_registered_text_view_margin_bottom"
-        android:text="@string/not_registered_text_view_text"
-        android:textColor="@color/not_registered_text_view_text_color"
-        android:textSize="@dimen/not_registered_text_view_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/login_activity_sign_up_button_margin_bottom"
-        android:backgroundTint="@color/white"
-        android:onClick="signUpButtonClicked"
+        android:backgroundTint="@color/registration_activity_sign_up_button_background_color"
         android:text="@string/sign_up_button_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/login_activity_sign_up_button_text_color"
-        android:textSize="@dimen/login_activity_sign_up_button_text_size"
-        app:cornerRadius="@dimen/login_activity_sign_up_button_corner_radius"
+        android:textSize="@dimen/registration_activity_sign_up_button_text_size"
+        app:cornerRadius="@dimen/registration_activity_sign_up_button_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/login_activity_sign_up_button_stroke_color"
-        app:strokeWidth="@dimen/login_activity_sign_up_button_stroke_width" />
+        app:layout_constraintTop_toBottomOf="@+id/whatIDoEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

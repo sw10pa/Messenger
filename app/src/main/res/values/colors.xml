@@ -13,4 +13,5 @@
     <color name="not_registered_text_view_text_color">#505050</color>
     <color name="login_activity_sign_up_button_text_color">#505050</color>
     <color name="login_activity_sign_up_button_stroke_color">#505050</color>
+    <color name="registration_activity_sign_up_button_background_color">#5479F1</color>
 </resources>
