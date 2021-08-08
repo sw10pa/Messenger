@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="credentials_edit_text_background_color">#F3F6FF</color>
+    <color name="login_activity_sign_in_button_background_color">#5479F1</color>
+    <color name="not_registered_text_view_text_color">#505050</color>
+    <color name="login_activity_sign_up_button_text_color">#505050</color>
+    <color name="login_activity_sign_up_button_stroke_color">#505050</color>
 </resources>
