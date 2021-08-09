@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openFirstActivity() {
-        val intent = Intent(this, RegistrationActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 

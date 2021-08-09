@@ -36,14 +36,18 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
 
     fun setListeners() {
         signUpButton.setOnClickListener {
-            val nickname = nicknameEditText.text.toString()
-            val password = passwordEditText.text.toString()
-            val occupation = whatIDoEditText.text.toString()
-            if (nickname == "" || password == "" || occupation == "") {
-                Toast.makeText(this@RegistrationActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
-            } else {
-                presenter.registerUser(User(nickname, password, occupation))
-            }
+            onSignUpButtonClicked()
+        }
+    }
+
+    fun onSignUpButtonClicked() {
+        val nickname = nicknameEditText.text.toString()
+        val password = passwordEditText.text.toString()
+        val occupation = whatIDoEditText.text.toString()
+        if (nickname == "" || password == "" || occupation == "") {
+            Toast.makeText(this@RegistrationActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        } else {
+            presenter.registerUser(User(nickname, password, occupation))
         }
     }
 
