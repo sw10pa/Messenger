@@ -48,11 +48,11 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
     }
 
     override fun onRegistrationSuccess() {
-        Log.d("registration", "successful")
+        Toast.makeText(this@RegistrationActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onRegistrationFailed() {
-        Log.d("registration", "failed")
+    override fun onRegistrationFailed(message: String) {
+        Toast.makeText(this@RegistrationActivity, message, Toast.LENGTH_SHORT).show()
     }
 
 }

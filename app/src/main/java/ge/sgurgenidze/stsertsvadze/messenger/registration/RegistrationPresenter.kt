@@ -13,7 +13,7 @@ class RegistrationPresenter(var view: IRegistrationView): IRegistrationPresenter
         view.onRegistrationSuccess()
     }
 
-    override fun onRegistrationFailed() {
-        view.onRegistrationFailed()
+    override fun onRegistrationFailed(message: String) {
+        view.onRegistrationFailed(message)
     }
 }
