@@ -3,20 +3,69 @@ package ge.sgurgenidze.stsertsvadze.messenger.login
 import android.os.Bundle
 import android.view.View
 import android.content.Intent
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
+import ge.sgurgenidze.stsertsvadze.messenger.model.User
 import ge.sgurgenidze.stsertsvadze.messenger.registration.RegistrationActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), ILoginView {
+
+    private lateinit var nicknameEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var signInButton: Button
+    private lateinit var signUpButton: Button
+
+    var presenter = LoginPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        initViews()
+
+        setListeners()
     }
 
-    fun signUpButtonClicked(view: View) {
+    fun initViews() {
+        nicknameEditText = findViewById(R.id.nicknameEditText)
+        passwordEditText = findViewById(R.id.passwordEditText)
+        signInButton = findViewById(R.id.signInButton)
+        signUpButton = findViewById(R.id.signUpButton)
+    }
+
+    fun setListeners() {
+        signInButton.setOnClickListener {
+            signInButtonClicked()
+        }
+        signUpButton.setOnClickListener {
+            signUpButtonClicked()
+        }
+    }
+
+    fun signInButtonClicked() {
+        val nickname = nicknameEditText.text.toString()
+        val password = passwordEditText.text.toString()
+        if (nickname != "" && password != "") {
+            presenter.login(nickname, password)
+        } else {
+            Toast.makeText(this@LoginActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun signUpButtonClicked() {
         val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onLoginSuccess(user: User) {
+        Toast.makeText(this@LoginActivity, user.nickname + " logged in", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onLoginFailed(message: String) {
+        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
     }
 
 }
