@@ -23,6 +23,9 @@
         <activity
             android:name=".registration.RegistrationActivity"
             android:exported="true" />
+        <activity
+            android:name=".homepage.HomepageActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

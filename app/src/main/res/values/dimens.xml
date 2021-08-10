@@ -24,4 +24,28 @@
 
     <dimen name="registration_activity_sign_up_button_text_size">22sp</dimen>
     <dimen name="registration_activity_sign_up_button_corner_radius">6dp</dimen>
+
+    <dimen name="app_bar_layout_height">200dp</dimen>
+    <dimen name="toolbar_margin_bottom">16dp</dimen>
+    <dimen name="search_edit_text_layout_height">55dp</dimen>
+    <dimen name="search_edit_text_margins">16dp</dimen>
+    <dimen name="search_edit_text_paddings">20dp</dimen>
+    <dimen name="search_edit_text_corner_radius">40dp</dimen>
+
+    <dimen name="add_floating_action_button_margin">16dp</dimen>
+    <dimen name="bottom_app_bar_content_inset_start">0dp</dimen>
+    <dimen name="bottom_app_bar_icon_size">22dp</dimen>
+    <dimen name="bottom_app_bar_separator_size">10dp</dimen>
+
+    <dimen name="short_chat_layout_height">130dp</dimen>
+    <dimen name="short_chat_avatar_image_view_size">60dp</dimen>
+    <dimen name="short_chat_avatar_image_view_margin_start">24dp</dimen>
+    <dimen name="short_chat_nickname_text_view_margin_start">16dp</dimen>
+    <dimen name="short_chat_nickname_text_view_margin_top">4dp</dimen>
+    <dimen name="short_chat_nickname_text_view_text_size">18sp</dimen>
+    <dimen name="short_chat_last_message_first_line_text_view_margin_top">16dp</dimen>
+    <dimen name="short_chat_last_message_text_view_text_size">14sp</dimen>
+    <dimen name="short_chat_last_message_second_line_text_view_margin_top">4dp</dimen>
+    <dimen name="short_chat_last_message_time_text_view_margin_end">24dp</dimen>
+    <dimen name="short_chat_last_message_time_text_view_text_size">14sp</dimen>
 </resources>

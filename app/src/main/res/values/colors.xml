@@ -8,10 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="status_bar_color">#5479F1</color>
     <color name="credentials_edit_text_background_color">#F3F6FF</color>
-    <color name="login_activity_sign_in_button_background_color">#5479F1</color>
+    <color name="button_background_color">#5479F1</color>
+    <color name="unselected_button_background_color">#666666</color>
     <color name="not_registered_text_view_text_color">#505050</color>
     <color name="login_activity_sign_up_button_text_color">#505050</color>
     <color name="login_activity_sign_up_button_stroke_color">#505050</color>
-    <color name="registration_activity_sign_up_button_background_color">#5479F1</color>
+    <color name="search_edit_text_background_color">#BFFFFFFF</color>
+    <color name="search_color">#5A5A5A</color>
+    <color name="chat_black_color">#262E47</color>
+    <color name="chat_gray_color">#9FA5B8</color>
 </resources>
