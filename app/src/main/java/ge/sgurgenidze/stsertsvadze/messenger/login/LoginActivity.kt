@@ -1,11 +1,10 @@
 package ge.sgurgenidze.stsertsvadze.messenger.login
 
 import android.os.Bundle
-import android.view.View
-import android.content.Intent
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import android.widget.Button
+import android.content.Intent
+import android.widget.EditText
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
@@ -55,7 +54,7 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         }
     }
 
-    fun signUpButtonClicked() {
+    private fun signUpButtonClicked() {
         val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
     }

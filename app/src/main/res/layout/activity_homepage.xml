@@ -102,15 +102,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/settingsImageButton" />
+                app:layout_constraintTop_toTopOf="@+id/profileImageButton" />
 
             <ImageButton
-                android:id="@+id/settingsImageButton"
+                android:id="@+id/profileImageButton"
                 android:layout_width="@dimen/bottom_app_bar_icon_size"
                 android:layout_height="@dimen/bottom_app_bar_icon_size"
                 android:background="@drawable/ic_baseline_settings_24"
                 android:backgroundTint="@color/unselected_button_background_color"
-                android:contentDescription="@string/settings_image_button_content_description"
+                android:contentDescription="@string/profile_image_button_content_description"
+                android:onClick="profileImageButtonClicked"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/separatorView"

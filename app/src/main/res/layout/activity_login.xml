@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/avatarImageView"
-        android:layout_width="@dimen/avatar_image_view_width"
-        android:layout_height="@dimen/avatar_image_view_height"
+        android:layout_width="@dimen/avatar_image_view_size"
+        android:layout_height="@dimen/avatar_image_view_size"
         android:layout_marginTop="@dimen/avatar_image_view_margin_top"
         android:contentDescription="@string/avatar_image_view_content_description"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/login_activity_sign_up_button_margin_bottom"
         android:backgroundTint="@color/white"
-        android:onClick="signUpButtonClicked"
         android:text="@string/sign_up_button_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/login_activity_sign_up_button_text_color"

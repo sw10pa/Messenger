@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".profile.ProfileActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/avatarImageButton"
+            android:layout_width="@dimen/avatar_image_button_size"
+            android:layout_height="@dimen/avatar_image_button_size"
+            android:layout_marginTop="@dimen/avatar_image_button_margin_top"
+            android:background="@drawable/avatar_image_placeholder"
+            android:contentDescription="@string/avatar_image_button_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/nicknameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/profile_edit_text_layout_height"
+            android:layout_marginTop="@dimen/avatar_image_button_margin_bottom"
+            android:background="@drawable/credentials_edit_text_background"
+            android:backgroundTint="@color/credentials_edit_text_background_color"
+            android:ems="12"
+            android:inputType="textPersonName"
+            android:text="@string/profile_nickname_edit_text_default_text"
+            android:textAlignment="center"
+            android:textColor="@color/credentials_text_color"
+            android:textSize="@dimen/profile_edit_text_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatarImageButton" />
+
+        <EditText
+            android:id="@+id/occupationEditText"
+            android:layout_width="@dimen/occupation_edit_text_width"
+            android:layout_height="@dimen/profile_edit_text_layout_height"
+            android:layout_marginTop="@dimen/profile_edit_text_spacing"
+            android:background="@drawable/credentials_edit_text_background"
+            android:backgroundTint="@color/credentials_edit_text_background_color"
+            android:ems="12"
+            android:inputType="textPersonName"
+            android:text="@string/profile_occupation_edit_text_default_text"
+            android:textAlignment="center"
+            android:textColor="@color/credentials_text_color"
+            android:textSize="@dimen/profile_edit_text_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/nicknameEditText"
+            app:layout_constraintStart_toStartOf="@+id/nicknameEditText"
+            app:layout_constraintTop_toBottomOf="@+id/nicknameEditText" />
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="@dimen/update_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/update_button_margin_top"
+            android:backgroundTint="@color/button_background_color"
+            android:text="@string/profile_update_button_text"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="@dimen/update_button_text_size"
+            app:cornerRadius="@dimen/update_button_corner_radius"
+            app:layout_constraintEnd_toEndOf="@+id/signOutButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/signOutButton"
+            app:layout_constraintTop_toBottomOf="@+id/occupationEditText" />
+
+        <Button
+            android:id="@+id/signOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sign_out_button_margin_top"
+            android:backgroundTint="@color/white"
+            android:text="@string/profile_sign_out_button_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/login_activity_sign_up_button_text_color"
+            android:textSize="@dimen/sign_out_button_text_size"
+            app:cornerRadius="@dimen/sign_out_button_corner_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateButton"
+            app:strokeColor="@color/login_activity_sign_up_button_stroke_color"
+            app:strokeWidth="@dimen/login_activity_sign_up_button_stroke_width" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/add_floating_action_button_margin"
+        android:contentDescription="@string/add_floating_action_button_content_description"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="@color/button_background_color"
+        app:layout_anchor="@id/bottomAppBar"
+        app:tint="@android:color/white" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:contentInsetStart="@dimen/bottom_app_bar_content_inset_start"
+        app:fabAlignmentMode="center"
+        app:hideOnScroll="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/homepageImageButton"
+                android:layout_width="@dimen/bottom_app_bar_icon_size"
+                android:layout_height="@dimen/bottom_app_bar_icon_size"
+                android:background="@drawable/ic_baseline_home_24"
+                android:backgroundTint="@color/unselected_button_background_color"
+                android:contentDescription="@string/homepage_image_button_content_description"
+                android:onClick="homepageImageButtonClicked"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/separatorView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <View
+                android:id="@+id/separatorView"
+                android:layout_width="@dimen/bottom_app_bar_separator_size"
+                android:layout_height="@dimen/bottom_app_bar_separator_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/profileImageButton" />
+
+            <ImageButton
+                android:id="@+id/profileImageButton"
+                android:layout_width="@dimen/bottom_app_bar_icon_size"
+                android:layout_height="@dimen/bottom_app_bar_icon_size"
+                android:background="@drawable/ic_baseline_settings_24"
+                android:backgroundTint="@color/button_background_color"
+                android:contentDescription="@string/profile_image_button_content_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/separatorView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

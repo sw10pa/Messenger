@@ -1,10 +1,9 @@
 package ge.sgurgenidze.stsertsvadze.messenger.registration
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.User

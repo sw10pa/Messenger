@@ -10,9 +10,14 @@
     <string name="search_edit_text_hint">Search</string>
     <string name="add_floating_action_button_content_description">Add Floating Action Button</string>
     <string name="homepage_image_button_content_description">Homepage Image Button</string>
-    <string name="settings_image_button_content_description">Settings Image Button</string>
+    <string name="profile_image_button_content_description">Profile Image Button</string>
     <string name="short_chat_nickname_text_view_default_text">Saba Tsertsvadze</string>
     <string name="short_chat_last_message_first_line_text_view_default_text">On my way home but i need to</string>
     <string name="short_chat_last_message_second_line_text_view_default_text">stop by the book store to…</string>
     <string name="short_chat_last_message_time_text_view_default_text">5 min</string>
+    <string name="avatar_image_button_content_description">Avatar Image Button</string>
+    <string name="profile_nickname_edit_text_default_text">Sayed Eftiaz</string>
+    <string name="profile_occupation_edit_text_default_text">Manager</string>
+    <string name="profile_update_button_text">Update</string>
+    <string name="profile_sign_out_button_text">SIGN OUT</string>
 </resources>

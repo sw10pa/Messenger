@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="avatar_image_view_width">200dp</dimen>
-    <dimen name="avatar_image_view_height">200dp</dimen>
+    <dimen name="avatar_image_view_size">200dp</dimen>
     <dimen name="avatar_image_view_margin_top">100dp</dimen>
     <dimen name="avatar_image_view_margin_bottom">40dp</dimen>
 
@@ -48,4 +47,19 @@
     <dimen name="short_chat_last_message_second_line_text_view_margin_top">4dp</dimen>
     <dimen name="short_chat_last_message_time_text_view_margin_end">24dp</dimen>
     <dimen name="short_chat_last_message_time_text_view_text_size">14sp</dimen>
+
+    <dimen name="avatar_image_button_size">190dp</dimen>
+    <dimen name="avatar_image_button_margin_top">100dp</dimen>
+    <dimen name="avatar_image_button_margin_bottom">40dp</dimen>
+    <dimen name="profile_edit_text_layout_height">45dp</dimen>
+    <dimen name="profile_edit_text_text_size">20sp</dimen>
+    <dimen name="profile_edit_text_spacing">14dp</dimen>
+    <dimen name="occupation_edit_text_width">0dp</dimen>
+    <dimen name="update_button_width">0dp</dimen>
+    <dimen name="update_button_margin_top">36dp</dimen>
+    <dimen name="update_button_text_size">20sp</dimen>
+    <dimen name="update_button_corner_radius">6dp</dimen>
+    <dimen name="sign_out_button_margin_top">8dp</dimen>
+    <dimen name="sign_out_button_text_size">18sp</dimen>
+    <dimen name="sign_out_button_corner_radius">6dp</dimen>
 </resources>

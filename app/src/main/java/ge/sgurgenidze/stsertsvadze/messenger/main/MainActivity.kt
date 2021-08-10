@@ -5,7 +5,6 @@ import android.content.Intent
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
 import ge.sgurgenidze.stsertsvadze.messenger.login.LoginActivity
-import ge.sgurgenidze.stsertsvadze.messenger.registration.RegistrationActivity
 
 class MainActivity : AppCompatActivity() {
 
