@@ -1,5 +1,7 @@
 package ge.sgurgenidze.stsertsvadze.messenger.login
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Button
@@ -7,6 +9,7 @@ import android.content.Intent
 import android.widget.EditText
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
+import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
 import ge.sgurgenidze.stsertsvadze.messenger.registration.RegistrationActivity
 
@@ -60,7 +63,18 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     }
 
     override fun onLoginSuccess(user: User) {
-        Toast.makeText(this@LoginActivity, user.nickname + " logged in", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+        saveLoggedUser(user)
+        val intent = Intent(this, HomepageActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun saveLoggedUser(user: User) {
+        val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putString("nickname", user.nickname).apply()
+        editor.putString("password", user.password).apply()
+        editor.putString("occupation", user.occupation).apply()
     }
 
     override fun onLoginFailed(message: String) {
