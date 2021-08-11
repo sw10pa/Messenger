@@ -4,6 +4,6 @@ import ge.sgurgenidze.stsertsvadze.messenger.model.User
 
 interface IRegistrationPresenter {
     fun registerUser(user: User)
-    fun onRegistrationSuccess()
+    fun onRegistrationSuccess(user: User)
     fun onRegistrationFailed(message: String)
 }

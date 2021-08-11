@@ -16,7 +16,7 @@ class ProfileInteractor(var presenter: IProfilePresenter) {
         queryRef.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val users = snapshot.getValue<Map<String, User>>()
-                if (users == null || users.count() == 0) {
+                if (users == null || users.count() == 0 || users.iterator().next().value.nickname == oldNickname) {
                     val newQueryRef = usersReference.orderByChild("nickname").equalTo(oldNickname)
                     newQueryRef.addListenerForSingleValueEvent(object: ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {

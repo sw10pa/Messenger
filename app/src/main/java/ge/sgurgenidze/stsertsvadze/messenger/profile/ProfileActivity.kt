@@ -52,7 +52,11 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
         val oldNickname = pref.getString("nickname", "")
         val newNickname = nicknameEditText.text.toString()
         val occupation = occupationEditText.text.toString()
-        presenter.updateProfile(oldNickname!!, newNickname, occupation)
+        if (newNickname != "" && occupation != "") {
+            presenter.updateProfile(oldNickname!!, newNickname, occupation)
+        } else {
+            Toast.makeText(this@ProfileActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun onSignOutButtonClicked() {

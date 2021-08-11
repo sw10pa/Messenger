@@ -20,7 +20,7 @@ class RegistrationInteractor(var presenter: IRegistrationPresenter) {
                     usersReference.push().key?.let {
                         usersReference.child(it).setValue(user)
                     }
-                    presenter.onRegistrationSuccess()
+                    presenter.onRegistrationSuccess(user)
                 } else {
                     presenter.onRegistrationFailed("Nickname Already Taken!")
                 }

@@ -9,8 +9,8 @@ class RegistrationPresenter(var view: IRegistrationView): IRegistrationPresenter
         interactor.registerUser(user)
     }
 
-    override fun onRegistrationSuccess() {
-        view.onRegistrationSuccess()
+    override fun onRegistrationSuccess(user: User) {
+        view.onRegistrationSuccess(user)
     }
 
     override fun onRegistrationFailed(message: String) {

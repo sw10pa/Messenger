@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.registration
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -52,10 +53,19 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
         }
     }
 
-    override fun onRegistrationSuccess() {
+    override fun onRegistrationSuccess(user: User) {
         Toast.makeText(this@RegistrationActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
+        saveLoggedUser(user)
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
+    }
+
+    fun saveLoggedUser(user: User) {
+        val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putString("nickname", user.nickname).apply()
+        editor.putString("password", user.password).apply()
+        editor.putString("occupation", user.occupation).apply()
     }
 
     override fun onRegistrationFailed(message: String) {
