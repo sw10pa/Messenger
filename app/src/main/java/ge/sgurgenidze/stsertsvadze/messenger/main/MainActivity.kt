@@ -1,12 +1,12 @@
 package ge.sgurgenidze.stsertsvadze.messenger.main
 
-import android.content.Context
 import android.os.Bundle
 import android.content.Intent
+import android.content.Context
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
-import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.login.LoginActivity
+import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 
 class MainActivity : AppCompatActivity() {
 

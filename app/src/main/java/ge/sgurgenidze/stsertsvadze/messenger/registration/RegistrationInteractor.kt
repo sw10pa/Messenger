@@ -1,11 +1,11 @@
 package ge.sgurgenidze.stsertsvadze.messenger.registration
 
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
 
 class RegistrationInteractor(var presenter: IRegistrationPresenter) {

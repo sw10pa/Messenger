@@ -42,9 +42,10 @@
     <dimen name="short_chat_nickname_text_view_margin_start">16dp</dimen>
     <dimen name="short_chat_nickname_text_view_margin_top">4dp</dimen>
     <dimen name="short_chat_nickname_text_view_text_size">18sp</dimen>
-    <dimen name="short_chat_last_message_first_line_text_view_margin_top">16dp</dimen>
+    <dimen name="short_chat_last_message_text_view_width">0dp</dimen>
+    <dimen name="short_chat_last_message_text_view_margin_top">16dp</dimen>
+    <dimen name="short_chat_last_message_text_view_margin_end">35dp</dimen>
     <dimen name="short_chat_last_message_text_view_text_size">14sp</dimen>
-    <dimen name="short_chat_last_message_second_line_text_view_margin_top">4dp</dimen>
     <dimen name="short_chat_last_message_time_text_view_margin_end">24dp</dimen>
     <dimen name="short_chat_last_message_time_text_view_text_size">14sp</dimen>
 

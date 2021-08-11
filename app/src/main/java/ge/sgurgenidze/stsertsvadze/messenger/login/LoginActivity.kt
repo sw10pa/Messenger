@@ -1,16 +1,15 @@
 package ge.sgurgenidze.stsertsvadze.messenger.login
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Button
 import android.content.Intent
 import android.widget.EditText
+import android.content.Context
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
-import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
+import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.registration.RegistrationActivity
 
 class LoginActivity : AppCompatActivity(), ILoginView {

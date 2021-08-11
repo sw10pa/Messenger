@@ -1,15 +1,14 @@
 package ge.sgurgenidze.stsertsvadze.messenger.profile
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import android.widget.Button
+import android.content.Intent
+import android.widget.EditText
+import android.content.Context
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
-import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.login.LoginActivity
 
 class ProfileActivity : AppCompatActivity(), IProfileView {

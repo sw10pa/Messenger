@@ -5,7 +5,7 @@
     android:layout_height="@dimen/short_chat_layout_height">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/avatarImageView"
         android:layout_width="@dimen/short_chat_avatar_image_view_size"
         android:layout_height="@dimen/short_chat_avatar_image_view_size"
         android:layout_marginStart="@dimen/short_chat_avatar_image_view_margin_start"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/avatar_image_placeholder" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nicknameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/short_chat_nickname_text_view_margin_start"
@@ -24,41 +24,32 @@
         android:text="@string/short_chat_nickname_text_view_default_text"
         android:textColor="@color/chat_black_color"
         android:textSize="@dimen/short_chat_nickname_text_view_text_size"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/avatarImageView"
+        app:layout_constraintTop_toTopOf="@+id/avatarImageView" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/lastMessageTextView"
+        android:layout_width="@dimen/short_chat_last_message_text_view_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/short_chat_last_message_first_line_text_view_margin_top"
-        android:text="@string/short_chat_last_message_first_line_text_view_default_text"
+        android:layout_marginTop="@dimen/short_chat_last_message_text_view_margin_top"
+        android:layout_marginEnd="@dimen/short_chat_last_message_text_view_margin_end"
+        android:text="@string/short_chat_last_message_text_view_default_text"
         android:textColor="@color/chat_gray_color"
         android:textSize="@dimen/short_chat_last_message_text_view_text_size"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toStartOf="@+id/lastMessageTimeTextView"
+        app:layout_constraintStart_toStartOf="@+id/nicknameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameTextView" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/short_chat_last_message_second_line_text_view_margin_top"
-        android:text="@string/short_chat_last_message_second_line_text_view_default_text"
-        android:textColor="@color/chat_gray_color"
-        android:textSize="@dimen/short_chat_last_message_text_view_text_size"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/lastMessageTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/short_chat_last_message_time_text_view_margin_end"
         android:text="@string/short_chat_last_message_time_text_view_default_text"
         android:textColor="@color/chat_gray_color"
         android:textSize="@dimen/short_chat_last_message_time_text_view_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/nicknameTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/nicknameTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

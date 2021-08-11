@@ -1,15 +1,15 @@
 package ge.sgurgenidze.stsertsvadze.messenger.registration
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Button
+import android.content.Intent
+import android.content.Context
 import android.widget.EditText
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
-import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
+import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
 
 class RegistrationActivity : AppCompatActivity(), IRegistrationView {
     

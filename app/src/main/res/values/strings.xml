@@ -12,8 +12,7 @@
     <string name="homepage_image_button_content_description">Homepage Image Button</string>
     <string name="profile_image_button_content_description">Profile Image Button</string>
     <string name="short_chat_nickname_text_view_default_text">Saba Tsertsvadze</string>
-    <string name="short_chat_last_message_first_line_text_view_default_text">On my way home but i need to</string>
-    <string name="short_chat_last_message_second_line_text_view_default_text">stop by the book store to…</string>
+    <string name="short_chat_last_message_text_view_default_text">On my way home but i need to stop by the book store to…</string>
     <string name="short_chat_last_message_time_text_view_default_text">5 min</string>
     <string name="avatar_image_button_content_description">Avatar Image Button</string>
     <string name="profile_nickname_edit_text_default_text">Sayed Eftiaz</string>
