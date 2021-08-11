@@ -63,4 +63,31 @@
     <dimen name="sign_out_button_margin_top">8dp</dimen>
     <dimen name="sign_out_button_text_size">18sp</dimen>
     <dimen name="sign_out_button_corner_radius">6dp</dimen>
+
+    <dimen name="chat_back_image_button_size">64dp</dimen>
+    <dimen name="chat_nickname_text_view_margin_top">4dp</dimen>
+    <dimen name="chat_nickname_text_view_text_size">20sp</dimen>
+    <dimen name="chat_avatar_image_view_size">56dp</dimen>
+    <dimen name="chat_avatar_image_view_margin_end">40dp</dimen>
+
+    <dimen name="message_text_view_background_corner_radius">40dp</dimen>
+    <dimen name="message_text_view_background_zero_corner_radius">0dp</dimen>
+    <dimen name="message_text_view_margin">16dp</dimen>
+    <dimen name="message_text_view_padding">24dp</dimen>
+    <dimen name="message_text_view_line_height">20dp</dimen>
+    <dimen name="message_text_view_max_width">290dp</dimen>
+    <dimen name="message_time_text_view_margin">32dp</dimen>
+    <dimen name="message_time_text_view_text_size">12sp</dimen>
+
+    <dimen name="message_container_view_size">0dp</dimen>
+    <dimen name="message_container_view_margin_top">-16dp</dimen>
+    <dimen name="message_edit_text_corner_radius">36dp</dimen>
+    <dimen name="message_edit_text_width">0dp</dimen>
+    <dimen name="message_edit_text_height">70dp</dimen>
+    <dimen name="message_edit_text_margin">16dp</dimen>
+    <dimen name="message_edit_text_padding_start">32dp</dimen>
+    <dimen name="message_edit_text_text_size">16sp</dimen>
+
+    <dimen name="send_image_button_size">32dp</dimen>
+    <dimen name="send_image_button_margin_end">24dp</dimen>
 </resources>

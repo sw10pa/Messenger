@@ -19,4 +19,10 @@
     <string name="profile_occupation_edit_text_default_text">Manager</string>
     <string name="profile_update_button_text">Update</string>
     <string name="profile_sign_out_button_text">SIGN OUT</string>
+    <string name="chat_back_image_button_content_description">Back Image Button</string>
+    <string name="chat_nickname_text_view_default_text">Sayed Eftiaz</string>
+    <string name="chat_occupation_text_view_default_text">Manager</string>
+    <string name="message_text_view_default_text">That ways we dont be able to give any advice. Can you do a small work 2–3 hour work of the style guide?</string>
+    <string name="message_time_text_view_default_text">12:10</string>
+    <string name="message_edit_text_hint">Message</string>
 </resources>
