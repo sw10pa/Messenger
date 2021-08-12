@@ -32,6 +32,9 @@
         <activity
             android:name=".chat.ChatActivity"
             android:exported="true" />
+        <activity
+            android:name=".users.UsersActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -39,7 +39,7 @@
                         android:layout_height="@dimen/chat_back_image_button_size"
                         android:background="@drawable/ic_baseline_chevron_left_24"
                         android:backgroundTint="@color/white"
-                        android:contentDescription="@string/chat_back_image_button_content_description"
+                        android:contentDescription="@string/back_image_button_content_description"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
