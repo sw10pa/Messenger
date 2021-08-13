@@ -6,7 +6,9 @@ import android.view.View
 import android.content.Intent
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import ge.sgurgenidze.stsertsvadze.messenger.chat.ChatActivity
 import ge.sgurgenidze.stsertsvadze.messenger.model.Chat
 import ge.sgurgenidze.stsertsvadze.messenger.profile.ProfileActivity
 
@@ -25,12 +27,12 @@ class HomepageActivity : AppCompatActivity(), IHomepageView {
 
     private fun initPrivateVariables() {
         chatsRecyclerView = findViewById(R.id.chatsRecyclerView)
-        chatsRecyclerView.adapter = ChatsAdapter(ArrayList<Chat>())
+        chatsRecyclerView.adapter = ChatsAdapter(this, ArrayList<Chat>())
     }
 
     private fun initChats() {
-        var prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        var nickname = prefs.getString("nickname", "")
+        val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val nickname = prefs.getString("nickname", "")
         presenter.fetchChats(nickname!!)
     }
 
@@ -40,10 +42,17 @@ class HomepageActivity : AppCompatActivity(), IHomepageView {
     }
 
     override fun onFetchSuccess(chats: List<Chat>) {
-        chatsRecyclerView.adapter = ChatsAdapter(chats)
+        chatsRecyclerView.adapter = ChatsAdapter(this, chats)
     }
 
     override fun onFetchFailed(message: String) {
+    }
+
+    override fun openChat(chatId: String, nickname: String) {
+        val intent = Intent(this, ChatActivity::class.java)
+        intent.putExtra("chatId", chatId)
+        intent.putExtra("nickname", nickname)
+        startActivity(intent)
     }
 
 }

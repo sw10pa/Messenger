@@ -42,18 +42,21 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
                     for ((chatId, chat) in chats) {
                         val id1 = chatId.substring(0, 20)
                         val id2 = chatId.substring(20)
-                        val iter = chat.iterator()
                         var lastActiveTime = 0.toLong()
-                        var entry = iter.next()
-                        if (entry.key == "lastActiveTime") {
-                            lastActiveTime = entry.value as Long
-                            entry = iter.next()
-                        } else {
-                            val tmp = iter.next()
-                            lastActiveTime = tmp.value as Long
+                        var maxTime = 0.toLong()
+                        var messageMap: HashMap<*, *>? = null
+                        for ((key, message) in chat) {
+                            if (key == "lastActiveTime") {
+                                lastActiveTime = message as Long
+                            } else {
+                                val tmp = message as HashMap<*, *>
+                                if ((tmp["time"] as Long) > maxTime) {
+                                    messageMap = tmp
+                                    maxTime = tmp["time"] as Long
+                                }
+                            }
                         }
-                        val messageMap = entry.value as HashMap<*, *>
-                        val message = Message(messageMap["message"] as String, messageMap["sender"] as Long, messageMap["time"] as Long)
+                        val message = Message(messageMap!!["message"] as String, messageMap["sender"] as Long, messageMap["time"] as Long)
                         if (userId == id1) {
                             fillChatList(chatId, id2, message, chatList, lastActiveTime)
                         } else if (userId == id2) {

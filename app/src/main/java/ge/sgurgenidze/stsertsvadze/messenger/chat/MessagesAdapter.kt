@@ -3,13 +3,17 @@ package ge.sgurgenidze.stsertsvadze.messenger.chat
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.widget.TextView
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.recyclerview.widget.RecyclerView
+import ge.sgurgenidze.stsertsvadze.messenger.model.Message
+import java.text.SimpleDateFormat
+import java.util.*
 
-class MessagesAdapter: RecyclerView.Adapter<MessagesViewHolder>() {
+class MessagesAdapter(var messages: List<Message>, val sender: Int): RecyclerView.Adapter<MessagesViewHolder>() {
 
     override fun getItemCount(): Int {
-        return 10
+        return messages.count()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessagesViewHolder {
@@ -25,11 +29,31 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MessagesViewHolder, position: Int) {
-
+        val message = messages[position]
+        val messageTextView = holder.itemView.findViewById<TextView>(R.id.messageTextView)
+        val timeTextView = holder.itemView.findViewById<TextView>(R.id.timeTextView)
+        messageTextView.text = message.message.toString()
+        val time = message.time!!
+        val date = Date(time)
+        val k = date.toString()
+        timeTextView.text = date.toHourAndMinuteFormat()
     }
 
     override fun getItemViewType(position: Int): Int {
-        return (position % 2)
+        val curr = messages[position].sender!!.toInt()
+        if (sender == 0) {
+            return curr
+        } else {
+            return 1 - curr
+        }
+    }
+
+    fun Date.toHourAndMinuteFormat(): String {
+        val sdf= SimpleDateFormat("HH-mm", Locale.getDefault())
+        val dt = sdf.format(this)
+        val hour = dt.substring(0, 2)
+        val minute = dt.substring(3)
+        return "$hour:$minute"
     }
 
 }

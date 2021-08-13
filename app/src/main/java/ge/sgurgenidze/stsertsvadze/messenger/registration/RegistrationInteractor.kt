@@ -19,6 +19,7 @@ class RegistrationInteractor(var presenter: IRegistrationPresenter) {
                 if (users == null || users.count() == 0) {
                     usersReference.push().key?.let {
                         usersReference.child(it).setValue(user)
+                        user.id = it
                     }
                     presenter.onRegistrationSuccess(user)
                 } else {

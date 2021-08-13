@@ -1,17 +1,19 @@
 package ge.sgurgenidze.stsertsvadze.messenger.homepage
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.recyclerview.widget.RecyclerView
 import ge.sgurgenidze.stsertsvadze.messenger.model.Chat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ChatsAdapter(var chats: List<Chat>): RecyclerView.Adapter<ChatsViewHolder>() {
+class ChatsAdapter(var view: IHomepageView, var chats: List<Chat>): RecyclerView.Adapter<ChatsViewHolder>() {
 
     override fun getItemCount(): Int {
         return chats.size
@@ -48,10 +50,12 @@ class ChatsAdapter(var chats: List<Chat>): RecyclerView.Adapter<ChatsViewHolder>
             val date = Date(time)
             lastMessageTime.text = date.toDayAndMonthsFormat()
         }
+        holder.itemView.setOnClickListener {
+            view.openChat(chats[chats.size - position - 1].id!!, chats[chats.size - position - 1].user?.nickname!!)
+        }
     }
 
     fun Date.toDayAndMonthsFormat(): String {
-
         val sdf= SimpleDateFormat("dd-MM", Locale.getDefault())
         val dt = sdf.format(this)
         val months = arrayOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
@@ -62,7 +66,6 @@ class ChatsAdapter(var chats: List<Chat>): RecyclerView.Adapter<ChatsViewHolder>
         }
         val month = months[m]
         return "$day $month"
-
     }
 
 }
