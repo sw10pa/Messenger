@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
     private fun openFirstActivity() {
         val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val nickname = pref.getString("nickname", "")
+
+        val intent = Intent(this, HomepageActivity::class.java)
+        startActivity(intent)
         if (nickname != "") {
             val password = pref.getString("password", "")
             val occupation = pref.getString("occupation", "")
             val intent = Intent(this, HomepageActivity::class.java)
-            intent.putExtra("nickname", nickname)
-            intent.putExtra("password", password)
-            intent.putExtra("occupation", occupation)
             startActivity(intent)
         } else {
             val intent = Intent(this, LoginActivity::class.java)
