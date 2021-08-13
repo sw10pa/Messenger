@@ -1,15 +1,15 @@
 package ge.sgurgenidze.stsertsvadze.messenger.homepage
 
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import ge.sgurgenidze.stsertsvadze.messenger.model.Chat
 import ge.sgurgenidze.stsertsvadze.messenger.model.Message
 import ge.sgurgenidze.stsertsvadze.messenger.model.User
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class HomepageInteractor(var presenter: IHomepagePresenter) {
     fun fetchChats(nickname: String) {
@@ -20,7 +20,7 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val users = snapshot.getValue<Map<String, User>>()
                 val userId = users?.iterator()?.next()?.key
-                fetchChatsByUserId(userId!!)
+                fetchChatsByUserId(userId!!, nickname)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -29,11 +29,12 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
         })
     }
 
-    private fun fetchChatsByUserId(userId: String) {
+    private fun fetchChatsByUserId(userId: String, nickname: String) {
         val dbReference = Firebase.database.reference
         val chatList = ArrayList<Chat>()
         val chatReference = dbReference.child("chat")
-        var queryRef = chatReference.orderByChild("lastActiveTime")
+        addListener(chatReference, nickname)
+        val queryRef = chatReference.orderByChild("lastActiveTime")
         queryRef.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val chats = snapshot.getValue<Map<String, Map<String, Any>>>()
@@ -42,14 +43,21 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
                         val id1 = chatId.substring(0, 20)
                         val id2 = chatId.substring(20)
                         val iter = chat.iterator()
+                        var lastActiveTime = 0.toLong()
                         var entry = iter.next()
-                        if (entry.key == "lastActiveTime") entry = iter.next()
+                        if (entry.key == "lastActiveTime") {
+                            lastActiveTime = entry.value as Long
+                            entry = iter.next()
+                        } else {
+                            val tmp = iter.next()
+                            lastActiveTime = tmp.value as Long
+                        }
                         val messageMap = entry.value as HashMap<*, *>
                         val message = Message(messageMap["message"] as String, messageMap["sender"] as Long, messageMap["time"] as Long)
                         if (userId == id1) {
-                            fillChatList(chatId, id2, message, chatList)
+                            fillChatList(chatId, id2, message, chatList, lastActiveTime)
                         } else if (userId == id2) {
-                            fillChatList(chatId, id1, message, chatList)
+                            fillChatList(chatId, id1, message, chatList, lastActiveTime)
                         }
                     }
                 } else {
@@ -63,19 +71,43 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
         })
     }
 
-    fun fillChatList(chatId: String, userId: String, message: Message, chatList: ArrayList<Chat>) {
+    private fun addListener(chatRef: DatabaseReference, nickname: String) {
+        chatRef.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                fetchChats(nickname)
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {}
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onCancelled(error: DatabaseError) {}
+
+        })
+    }
+
+    fun fillChatList(chatId: String, userId: String, message: Message, chatList: ArrayList<Chat>, lastActiveTime: Long) {
         val dbReference = Firebase.database.reference
         val usersReference = dbReference.child("users")
         val queryRef = usersReference.orderByKey().equalTo(userId)
+
         queryRef.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val users = snapshot.getValue<Map<String, User>>()
 
                 if (users != null && users.count() != 0) {
                     val entry = users.iterator().next()
-                    val chat = Chat(chatId, message, entry.value)
+                    val chat = Chat(chatId, message, entry.value, lastActiveTime)
                     chatList.add(chat)
                 }
+                val comparator = Comparator { c1: Chat, c2: Chat ->
+                    if (c1.lastActiveTime!! > c2.lastActiveTime!!) return@Comparator 1
+                    if (c1.lastActiveTime < c2.lastActiveTime) return@Comparator -1
+                    return@Comparator 0
+                }
+                chatList.sortWith(comparator)
                 presenter.onFetchSuccess(chatList)
             }
 
