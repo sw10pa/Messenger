@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.UsersActivity">
+
+    <View
+        android:id="@+id/containerView"
+        android:layout_width="@dimen/user_header_container_view_width"
+        android:layout_height="@dimen/user_header_container_view_height"
+        android:background="@color/status_bar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backImageButton"
+        android:layout_width="@dimen/users_back_image_button_size"
+        android:layout_height="@dimen/users_back_image_button_size"
+        android:layout_marginStart="@dimen/users_back_image_button_margin_start"
+        android:background="@drawable/ic_baseline_chevron_left_24"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/back_image_button_content_description"
+        app:layout_constraintBottom_toBottomOf="@+id/searchEditText"
+        app:layout_constraintStart_toStartOf="@+id/containerView"
+        app:layout_constraintTop_toTopOf="@+id/searchEditText" />
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="@dimen/users_search_edit_text_width"
+        android:layout_height="@dimen/users_search_edit_text_height"
+        android:layout_marginStart="@dimen/users_search_edit_text_margin_start"
+        android:layout_marginEnd="@dimen/users_search_edit_text_margin_end"
+        android:layout_marginBottom="@dimen/users_search_edit_text_margin_bottom"
+        android:background="@drawable/search_edit_text_background"
+        android:backgroundTint="@color/search_edit_text_background_color"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:hint="@string/search_edit_text_hint"
+        android:inputType="textPersonName"
+        android:paddingStart="@dimen/search_edit_text_paddings"
+        android:paddingEnd="@dimen/search_edit_text_paddings"
+        android:textColorHint="@color/search_color"
+        app:layout_constraintBottom_toBottomOf="@+id/containerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backImageButton" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usersRecyclerView"
+        android:layout_width="@dimen/users_recycler_view_size"
+        android:layout_height="@dimen/users_recycler_view_size"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

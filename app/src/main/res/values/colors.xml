@@ -28,4 +28,6 @@
     <color name="sent_message_color">#FAFAFA</color>
     <color name="received_message_color">#646464</color>
     <color name="message_time_color">#B4B4B4</color>
+    <color name="user_nickname_text_view_text_color">#323232</color>
+    <color name="user_occupation_text_view_text_color">#8C8C8C</color>
 </resources>

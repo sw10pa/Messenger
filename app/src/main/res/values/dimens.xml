@@ -87,7 +87,25 @@
     <dimen name="message_edit_text_margin">16dp</dimen>
     <dimen name="message_edit_text_padding_start">32dp</dimen>
     <dimen name="message_edit_text_text_size">16sp</dimen>
-
     <dimen name="send_image_button_size">32dp</dimen>
     <dimen name="send_image_button_margin_end">24dp</dimen>
+
+    <dimen name="user_header_container_view_width">0dp</dimen>
+    <dimen name="user_header_container_view_height">90dp</dimen>
+    <dimen name="users_back_image_button_size">64dp</dimen>
+    <dimen name="users_back_image_button_margin_start">-4dp</dimen>
+    <dimen name="users_search_edit_text_width">0dp</dimen>
+    <dimen name="users_search_edit_text_height">55dp</dimen>
+    <dimen name="users_search_edit_text_margin_start">-4dp</dimen>
+    <dimen name="users_search_edit_text_margin_end">16dp</dimen>
+    <dimen name="users_search_edit_text_margin_bottom">24dp</dimen>
+    <dimen name="users_recycler_view_size">0dp</dimen>
+
+    <dimen name="user_avatar_image_view_size">70dp</dimen>
+    <dimen name="user_avatar_image_view_margin_start">24dp</dimen>
+    <dimen name="user_nickname_text_view_margin_start">24dp</dimen>
+    <dimen name="user_nickname_text_view_margin_top">12dp</dimen>
+    <dimen name="user_nickname_text_view_text_size">20sp</dimen>
+    <dimen name="user_occupation_text_view_margin_top">-2dp</dimen>
+    <dimen name="user_occupation_text_view_text_size">16sp</dimen>
 </resources>
