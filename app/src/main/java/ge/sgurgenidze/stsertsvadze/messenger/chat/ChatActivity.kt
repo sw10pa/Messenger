@@ -2,6 +2,7 @@ package ge.sgurgenidze.stsertsvadze.messenger.chat
 
 import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -44,6 +45,14 @@ class ChatActivity : AppCompatActivity(), IChatView {
         }
         sendImageButton.setOnClickListener {
             onSendClicked()
+        }
+        messageEditText.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_DONE){
+                onSendClicked()
+                true
+            } else {
+                false
+            }
         }
     }
 

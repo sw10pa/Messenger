@@ -7,6 +7,7 @@ import ge.sgurgenidze.stsertsvadze.messenger.R
 import androidx.appcompat.app.AppCompatActivity
 import ge.sgurgenidze.stsertsvadze.messenger.login.LoginActivity
 import ge.sgurgenidze.stsertsvadze.messenger.homepage.HomepageActivity
+import ge.sgurgenidze.stsertsvadze.messenger.users.UsersActivity
 
 class MainActivity : AppCompatActivity() {
 

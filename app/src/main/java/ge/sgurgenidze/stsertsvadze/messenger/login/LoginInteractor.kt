@@ -20,7 +20,7 @@ class LoginInteractor(var presenter: ILoginPresenter) {
                     val entry = users.iterator().next()
                     val user = entry.value
                     if (nickname == user.nickname && password == user.password) {
-                        presenter.onLoginSuccess(User(entry.key, user.nickname, user.password, user.occupation))
+                        presenter.onLoginSuccess(User(user.nickname, user.password, user.occupation, entry.key))
                     } else {
                         presenter.onLoginFailed("Invalid Credentials")
                     }
