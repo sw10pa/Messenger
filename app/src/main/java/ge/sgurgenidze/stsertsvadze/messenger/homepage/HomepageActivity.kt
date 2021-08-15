@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.homepage
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,7 @@ class HomepageActivity : AppCompatActivity(), IHomepageView, CoroutineScope {
     private lateinit var addFloatingActionButton: FloatingActionButton
     private var chats: List<Chat>? = null
     var presenter = HomepagePresenter(this)
+    private lateinit var progressDialog: ProgressDialog
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
@@ -46,6 +48,10 @@ class HomepageActivity : AppCompatActivity(), IHomepageView, CoroutineScope {
         addFloatingActionButton = findViewById(R.id.addFloatingActionButton)
         chatsRecyclerView = findViewById(R.id.chatsRecyclerView)
         chatsRecyclerView.adapter = ChatsAdapter(this, ArrayList<Chat>())
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     private fun addListeners() {
@@ -56,6 +62,7 @@ class HomepageActivity : AppCompatActivity(), IHomepageView, CoroutineScope {
     }
 
     private fun initChats() {
+        progressDialog.show()
         val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val nickname = prefs.getString("nickname", "")
         presenter.fetchChats(nickname!!)
@@ -69,9 +76,11 @@ class HomepageActivity : AppCompatActivity(), IHomepageView, CoroutineScope {
     override fun onFetchSuccess(chats: List<Chat>) {
         this.chats = chats
         chatsRecyclerView.adapter = ChatsAdapter(this, chats)
+        progressDialog.dismiss()
     }
 
     override fun onFetchFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@HomepageActivity, message, Toast.LENGTH_SHORT).show()
     }
 

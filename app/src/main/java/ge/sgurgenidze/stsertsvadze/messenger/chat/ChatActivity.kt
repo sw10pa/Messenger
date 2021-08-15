@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.chat
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
@@ -19,6 +20,7 @@ class ChatActivity : AppCompatActivity(), IChatView {
     private lateinit var backImageButton: ImageButton
     private lateinit var sendImageButton: ImageButton
     private lateinit var messageEditText: EditText
+    private lateinit var progressDialog: ProgressDialog
     private var sender = 0
 
     var presenter = ChatPresenter(this)
@@ -37,6 +39,10 @@ class ChatActivity : AppCompatActivity(), IChatView {
         backImageButton = findViewById(R.id.backImageButton)
         sendImageButton = findViewById(R.id.sendImageButton)
         messageEditText = findViewById(R.id.messageEditText)
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     private fun addListeners() {
@@ -76,15 +82,18 @@ class ChatActivity : AppCompatActivity(), IChatView {
             sender = 1
         }
         nicknameTextView.text = nickname
+        progressDialog.show()
         presenter.fetchChats(chatId)
     }
 
     override fun onFetchSuccess(messages: List<Message>) {
+        progressDialog.dismiss()
         val adapter = MessagesAdapter(messages, sender)
         messagesRecyclerView.adapter = adapter
     }
 
     override fun onFetchFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@ChatActivity, message, Toast.LENGTH_SHORT).show()
     }
 
