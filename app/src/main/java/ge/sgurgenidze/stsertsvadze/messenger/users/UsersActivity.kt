@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.users
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -25,6 +26,7 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
     private lateinit var usersRecyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var backImageButton: ImageButton
+    private lateinit var progressDialog: ProgressDialog
 
     var presenter = UsersPresenter(this)
 
@@ -42,6 +44,10 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
         backImageButton = findViewById(R.id.backImageButton)
         usersRecyclerView = findViewById(R.id.usersRecyclerView)
         usersRecyclerView.adapter = UsersAdapter(this, ArrayList<User>())
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
@@ -66,8 +72,10 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
                         return@launch
 
                     if (name.isEmpty()) {
+                        progressDialog.show()
                         presenter.fetchUsers("", loggedNickname!!)
-                    } else if (name.length > 3) {
+                    } else if (name.length >= 3) {
+                        progressDialog.show()
                         presenter.fetchUsers(name, loggedNickname!!)
                     }
                 }
@@ -91,6 +99,7 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
     }
 
     override fun onUsersFetched(users: List<User>) {
+        progressDialog.dismiss()
         if (users.count() == 0) {
             val adapter = UsersAdapter(this, ArrayList<User>())
             usersRecyclerView.adapter = adapter
@@ -102,6 +111,7 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
     }
 
     override fun onGetUserIdSuccess(nickname: String, userId: String) {
+        progressDialog.dismiss()
         val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val loggedUserId = prefs.getString("userId", "")!!
         var chatId = "$userId$loggedUserId"
@@ -115,10 +125,12 @@ class UsersActivity() : AppCompatActivity(), CoroutineScope, IUsersView {
     }
 
     override fun onGetUserIdFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@UsersActivity, message, Toast.LENGTH_SHORT).show()
     }
 
     fun startChat(nickname: String) {
+        progressDialog.show()
         presenter.getUserId(nickname)
     }
 }

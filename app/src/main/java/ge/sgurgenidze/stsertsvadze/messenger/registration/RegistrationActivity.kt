@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.registration
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Button
@@ -17,6 +18,7 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
     private lateinit var passwordEditText: EditText
     private lateinit var whatIDoEditText: EditText
     private lateinit var signUpButton: Button
+    private lateinit var progressDialog: ProgressDialog
 
     var presenter = RegistrationPresenter(this)
 
@@ -34,6 +36,10 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
         passwordEditText = findViewById(R.id.passwordEditText)
         whatIDoEditText = findViewById(R.id.whatIDoEditText)
         signUpButton = findViewById(R.id.signUpButton)
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     fun setListeners() {
@@ -49,11 +55,13 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
         if (nickname == "" || password == "" || occupation == "") {
             Toast.makeText(this@RegistrationActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
         } else {
+            progressDialog.show()
             presenter.registerUser(User(nickname, password, occupation))
         }
     }
 
     override fun onRegistrationSuccess(user: User) {
+        progressDialog.dismiss()
         Toast.makeText(this@RegistrationActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
         saveLoggedUser(user)
         val intent = Intent(this, HomepageActivity::class.java)
@@ -69,6 +77,7 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
     }
 
     override fun onRegistrationFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@RegistrationActivity, message, Toast.LENGTH_SHORT).show()
     }
 

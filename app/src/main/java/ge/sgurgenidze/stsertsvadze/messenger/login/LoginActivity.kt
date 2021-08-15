@@ -1,5 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.login
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Button
@@ -18,6 +19,7 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     private lateinit var passwordEditText: EditText
     private lateinit var signInButton: Button
     private lateinit var signUpButton: Button
+    private lateinit var progressDialog: ProgressDialog
 
     var presenter = LoginPresenter(this)
 
@@ -35,6 +37,10 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         passwordEditText = findViewById(R.id.passwordEditText)
         signInButton = findViewById(R.id.signInButton)
         signUpButton = findViewById(R.id.signUpButton)
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     fun setListeners() {
@@ -50,6 +56,7 @@ class LoginActivity : AppCompatActivity(), ILoginView {
         val nickname = nicknameEditText.text.toString()
         val password = passwordEditText.text.toString()
         if (nickname != "" && password != "") {
+            progressDialog.show()
             presenter.login(nickname, password)
         } else {
             Toast.makeText(this@LoginActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
@@ -62,6 +69,7 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     }
 
     override fun onLoginSuccess(user: User) {
+        progressDialog.dismiss()
         Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
         saveLoggedUser(user)
         val intent = Intent(this, HomepageActivity::class.java)
@@ -77,6 +85,7 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     }
 
     override fun onLoginFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
     }
 

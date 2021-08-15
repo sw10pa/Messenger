@@ -11,6 +11,7 @@ import android.content.Context
 import android.widget.ImageButton
 import android.provider.MediaStore
 import android.Manifest.permission.*
+import android.app.ProgressDialog
 import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.graphics.*
@@ -36,6 +37,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
     private lateinit var occupationEditText: EditText
     private lateinit var updateButton: Button
     private lateinit var signOutButton: Button
+    private lateinit var progressDialog: ProgressDialog
 
     var presenter = ProfilePresenter(this)
 
@@ -55,6 +57,10 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
         occupationEditText = findViewById(R.id.occupationEditText)
         updateButton = findViewById(R.id.updateButton)
         signOutButton = findViewById(R.id.signOutButton)
+
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Wait while loading...")
     }
 
     fun setListeners() {
@@ -140,6 +146,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
         val newNickname = nicknameEditText.text.toString()
         val occupation = occupationEditText.text.toString()
         if (newNickname != "" && occupation != "") {
+            progressDialog.show()
             presenter.updateProfile(oldNickname!!, newNickname, occupation)
         } else {
             Toast.makeText(this@ProfileActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
@@ -169,6 +176,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
     }
 
     override fun onUpdateSuccess(nickname: String, occupation: String) {
+        progressDialog.dismiss()
         val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString("nickname", nickname).apply()
@@ -177,6 +185,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
     }
 
     override fun onUpdateFailed(message: String) {
+        progressDialog.dismiss()
         Toast.makeText(this@ProfileActivity, message, Toast.LENGTH_SHORT).show()
     }
 
