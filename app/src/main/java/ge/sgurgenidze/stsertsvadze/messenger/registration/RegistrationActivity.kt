@@ -60,12 +60,11 @@ class RegistrationActivity : AppCompatActivity(), IRegistrationView {
         startActivity(intent)
     }
 
-    fun saveLoggedUser(user: User) {
+    private fun saveLoggedUser(user: User) {
         val pref = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString("userId", user.id).apply()
         editor.putString("nickname", user.nickname).apply()
-        editor.putString("password", user.password).apply()
         editor.putString("occupation", user.occupation).apply()
     }
 
