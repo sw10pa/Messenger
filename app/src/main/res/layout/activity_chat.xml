@@ -115,6 +115,7 @@
             android:hint="@string/message_edit_text_hint"
             android:inputType="textPersonName"
             android:paddingStart="@dimen/message_edit_text_padding_start"
+            android:paddingEnd="@dimen/message_edit_text_padding_end"
             android:textSize="@dimen/message_edit_text_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
