@@ -39,6 +39,7 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val chats = snapshot.getValue<Map<String, Map<String, Any>>>()
                 if (chats != null && chats.count() > 0) {
+                    var count = 0
                     for ((chatId, chat) in chats) {
                         val id1 = chatId.substring(0, 20)
                         val id2 = chatId.substring(20)
@@ -58,12 +59,14 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
                         }
                         val message = Message(messageMap!!["message"] as String, messageMap["sender"] as Long, messageMap["time"] as Long)
                         if (userId == id1) {
+                            count++
                             fillChatList(chatId, id2, message, chatList, lastActiveTime)
                         } else if (userId == id2) {
+                            count++
                             fillChatList(chatId, id1, message, chatList, lastActiveTime)
                         }
                     }
-                    if (chatList.count() == 0) {
+                    if (count == 0) {
                         presenter.onFetchFailed("Chats not found")
                     }
                 } else {

@@ -32,6 +32,8 @@ class ChatInteractor(var presenter: IChatPresenter) {
                     }
                     messages.sortWith(comparator)
                     presenter.onFetchSuccess(messages)
+                } else {
+                    presenter.onFetchSuccess(ArrayList<Message>())
                 }
             }
 
