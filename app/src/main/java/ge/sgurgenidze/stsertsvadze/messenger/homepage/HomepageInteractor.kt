@@ -67,7 +67,7 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
                         }
                     }
                     if (count == 0) {
-                        presenter.onFetchFailed("Chats not found")
+                        presenter.onFetchSuccess(ArrayList<Chat>())
                     }
                 } else {
                     presenter.onFetchSuccess(ArrayList<Chat>())
