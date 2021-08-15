@@ -68,16 +68,17 @@
     <dimen name="chat_nickname_text_view_margin_top">4dp</dimen>
     <dimen name="chat_nickname_text_view_text_size">20sp</dimen>
     <dimen name="chat_avatar_image_view_size">56dp</dimen>
-    <dimen name="chat_avatar_image_view_margin_end">40dp</dimen>
+    <dimen name="chat_avatar_image_view_margin_end">32dp</dimen>
 
     <dimen name="message_text_view_background_corner_radius">40dp</dimen>
     <dimen name="message_text_view_background_zero_corner_radius">0dp</dimen>
     <dimen name="message_text_view_margin">16dp</dimen>
     <dimen name="message_text_view_padding">24dp</dimen>
     <dimen name="message_text_view_line_height">20dp</dimen>
-    <dimen name="message_text_view_max_width">290dp</dimen>
-    <dimen name="message_time_text_view_margin">32dp</dimen>
+    <dimen name="message_text_view_max_width">286dp</dimen>
+    <dimen name="message_time_text_view_margin">16dp</dimen>
     <dimen name="message_time_text_view_text_size">12sp</dimen>
+    <dimen name="empty_message_view_height">102dp</dimen>
 
     <dimen name="message_container_view_size">0dp</dimen>
     <dimen name="message_container_view_margin_top">-16dp</dimen>
@@ -86,6 +87,7 @@
     <dimen name="message_edit_text_height">70dp</dimen>
     <dimen name="message_edit_text_margin">16dp</dimen>
     <dimen name="message_edit_text_padding_start">32dp</dimen>
+    <dimen name="message_edit_text_padding_end">64dp</dimen>
     <dimen name="message_edit_text_text_size">16sp</dimen>
     <dimen name="send_image_button_size">32dp</dimen>
     <dimen name="send_image_button_margin_end">24dp</dimen>
@@ -108,4 +110,6 @@
     <dimen name="user_nickname_text_view_text_size">20sp</dimen>
     <dimen name="user_occupation_text_view_margin_top">-2dp</dimen>
     <dimen name="user_occupation_text_view_text_size">16sp</dimen>
+
+    <dimen name="edit_text_paddings">32dp</dimen>
 </resources>
