@@ -55,4 +55,9 @@ class HomepageActivity : AppCompatActivity(), IHomepageView {
         startActivity(intent)
     }
 
+    override fun onResume() {
+        super.onResume()
+        initChats()
+    }
+
 }

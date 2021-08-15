@@ -40,7 +40,9 @@ class ChatsAdapter(var view: IHomepageView, var chats: List<Chat>): RecyclerView
         val time = chat.message.time!!
         val currTime = System.currentTimeMillis()
         var diff = currTime - time
-        if (diff < 3600000) {
+        if (diff < 60000) {
+            lastMessageTime.text = "now"
+        } else if (diff < 3600000) {
             diff /= 60000
             lastMessageTime.text = "$diff min"
         } else if (diff < 86400000) {

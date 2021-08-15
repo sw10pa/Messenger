@@ -1,8 +1,6 @@
 package ge.sgurgenidze.stsertsvadze.messenger.chat
 
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
@@ -12,6 +10,7 @@ class ChatInteractor(var presenter: IChatPresenter) {
     fun fetchChats(chatId: String) {
         val dbReference = Firebase.database.reference
         val chatReference = dbReference.child("chat")
+        addListener(chatReference, chatId)
         val queryRef = chatReference.orderByKey().equalTo(chatId)
         queryRef.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -43,6 +42,23 @@ class ChatInteractor(var presenter: IChatPresenter) {
         })
     }
 
+    private fun addListener(chatRef: DatabaseReference, chatId: String) {
+        chatRef.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                fetchChats(chatId)
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {}
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+
+            override fun onCancelled(error: DatabaseError) {}
+
+        })
+    }
+
     fun sendMessage(chatId: String, sender: Int, message: String) {
         val time = System.currentTimeMillis()
         val msg = Message(message, sender.toLong(), time)
@@ -50,6 +66,7 @@ class ChatInteractor(var presenter: IChatPresenter) {
         val chatReference = dbReference.child("chat").child(chatId)
         chatReference.push().key?.let {
             chatReference.child(it).setValue(msg)
+            chatReference.child("lastActiveTime").setValue(time)
         }
     }
 }

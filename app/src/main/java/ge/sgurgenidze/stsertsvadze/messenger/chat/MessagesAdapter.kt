@@ -35,7 +35,6 @@ class MessagesAdapter(var messages: List<Message>, val sender: Int): RecyclerVie
         messageTextView.text = message.message.toString()
         val time = message.time!!
         val date = Date(time)
-        val k = date.toString()
         timeTextView.text = date.toHourAndMinuteFormat()
     }
 
@@ -49,11 +48,8 @@ class MessagesAdapter(var messages: List<Message>, val sender: Int): RecyclerVie
     }
 
     fun Date.toHourAndMinuteFormat(): String {
-        val sdf= SimpleDateFormat("HH-mm", Locale.getDefault())
-        val dt = sdf.format(this)
-        val hour = dt.substring(0, 2)
-        val minute = dt.substring(3)
-        return "$hour:$minute"
+        val sdf= SimpleDateFormat("HH:mm", Locale.getDefault())
+        return sdf.format(this)
     }
 
 }
