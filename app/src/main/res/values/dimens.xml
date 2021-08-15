@@ -68,7 +68,7 @@
     <dimen name="chat_nickname_text_view_margin_top">4dp</dimen>
     <dimen name="chat_nickname_text_view_text_size">20sp</dimen>
     <dimen name="chat_avatar_image_view_size">56dp</dimen>
-    <dimen name="chat_avatar_image_view_margin_end">40dp</dimen>
+    <dimen name="chat_avatar_image_view_margin_end">32dp</dimen>
 
     <dimen name="message_text_view_background_corner_radius">40dp</dimen>
     <dimen name="message_text_view_background_zero_corner_radius">0dp</dimen>
@@ -110,4 +110,6 @@
     <dimen name="user_nickname_text_view_text_size">20sp</dimen>
     <dimen name="user_occupation_text_view_margin_top">-2dp</dimen>
     <dimen name="user_occupation_text_view_text_size">16sp</dimen>
+
+    <dimen name="edit_text_paddings">32dp</dimen>
 </resources>

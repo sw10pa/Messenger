@@ -27,6 +27,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="@dimen/toolbar_margin_bottom"
+                app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
