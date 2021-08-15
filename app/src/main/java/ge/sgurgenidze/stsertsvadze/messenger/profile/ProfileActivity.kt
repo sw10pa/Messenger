@@ -25,9 +25,8 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 
 import android.graphics.Bitmap
-
-
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import ge.sgurgenidze.stsertsvadze.messenger.users.UsersActivity
 
 
 class ProfileActivity : AppCompatActivity(), IProfileView {
@@ -37,6 +36,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
     private lateinit var occupationEditText: EditText
     private lateinit var updateButton: Button
     private lateinit var signOutButton: Button
+    private lateinit var addFloatingActionButton: FloatingActionButton
     private lateinit var progressDialog: ProgressDialog
 
     var presenter = ProfilePresenter(this)
@@ -57,6 +57,7 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
         occupationEditText = findViewById(R.id.occupationEditText)
         updateButton = findViewById(R.id.updateButton)
         signOutButton = findViewById(R.id.signOutButton)
+        addFloatingActionButton = findViewById(R.id.addFloatingActionButton)
 
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Loading")
@@ -72,6 +73,10 @@ class ProfileActivity : AppCompatActivity(), IProfileView {
         }
         signOutButton.setOnClickListener {
             onSignOutButtonClicked()
+        }
+        addFloatingActionButton.setOnClickListener {
+            val intent = Intent(this, UsersActivity::class.java)
+            startActivity(intent)
         }
     }
 
