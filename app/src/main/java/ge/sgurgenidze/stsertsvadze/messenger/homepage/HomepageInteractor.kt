@@ -63,6 +63,9 @@ class HomepageInteractor(var presenter: IHomepagePresenter) {
                             fillChatList(chatId, id1, message, chatList, lastActiveTime)
                         }
                     }
+                    if (chatList.count() == 0) {
+                        presenter.onFetchFailed("Chats not found")
+                    }
                 } else {
                     presenter.onFetchSuccess(ArrayList<Chat>())
                 }
